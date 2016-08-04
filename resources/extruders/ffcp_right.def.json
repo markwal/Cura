@@ -1,0 +1,19 @@
+{
+    "id": "ffcp_right",
+    "version": 2, 
+    "name": "Right Extruder",
+    "inherits": "fdmextruder",
+    "metadata": {
+        "machine": "ffcp",
+        "position": "0"
+    },
+
+    "overrides": {
+        "extruder_nr": {
+            "default_value": 0,
+            "maximum_value": "1"
+        },
+        "machine_nozzle_offset_x": { "default_value": 0.0 },
+        "machine_nozzle_offset_y": { "default_value": 0.0 }
+    }
+}

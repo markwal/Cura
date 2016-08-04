@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Proposed Raptor PLA profile. Serves as an example file, data in this file is not necessarily correct.
+-->
+<fdmmaterial xmlns="http://www.ultimaker.com/material">
+    <metadata>
+        <name>
+            <brand>MakerGeeks</brand>
+            <material>RaptorPLA</material>
+            <color>Generic</color>
+        </name>
+        <GUID>faf0cd84-abf1-45cb-bc39-a52c3bff3341</GUID>
+        <version>0</version>
+        <color_code>#cc0000</color_code>
+    </metadata>
+    <properties>
+        <density>1.3</density>
+        <diameter>1.75</diameter>
+    </properties>
+    <settings>
+        <setting key="print temperature">230</setting>
+        <setting key="heated bed temperature">60</setting>
+    </settings>
+</fdmmaterial>

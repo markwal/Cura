@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Generic PETG profile. Serves as an example file, data in this file is not correct.
+-->
+<fdmmaterial xmlns="http://www.ultimaker.com/material">
+    <metadata>
+        <name>
+            <brand>Generic</brand>
+            <material>PETG</material>
+            <color>Generic</color>
+        </name>
+        <GUID>dd405a16-b138-4d3e-adaf-d1e71ee8ebeb</GUID>
+        <version>0</version>
+        <color_code>#0000cc</color_code>
+    </metadata>
+    <properties>
+        <density>0.94</density>
+        <diameter>1.75</diameter>
+    </properties>
+    <settings>
+        <setting key="print temperature">250</setting>
+        <setting key="heated bed temperature">70</setting>
+    </settings>
+</fdmmaterial>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Generic None profile. Serves as an example file, data in this file is not correct.
+-->
+<fdmmaterial xmlns="http://www.ultimaker.com/material">
+    <metadata>
+        <name>
+            <brand>Generic</brand>
+            <material>None</material>
+            <color>Generic</color>
+        </name>
+        <GUID>07293f2b-3b8d-4abc-9df6-d3f3a02ff275</GUID>
+        <version>0</version>
+        <color_code>#808080</color_code>
+    </metadata>
+    <properties>
+        <density>1.0</density>
+        <diameter>1.75</diameter>
+    </properties>
+    <settings>
+        <setting key="print temperature">0</setting>
+        <setting key="heated bed temperature">0</setting>
+    </settings>
+</fdmmaterial>
