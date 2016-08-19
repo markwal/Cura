@@ -68,11 +68,12 @@ class OctoPrintOutputDevice(OutputDevice):
         extension = gcodeFileFormat["extension"]
 
         # figure out a filename
-        for n in BreadthFirstIterator(node):
-            if n.getMeshData():
-                fileName = n.getName()
-                if fileName:
-                    break
+        if not fileName:
+            for n in BreadthFirstIterator(node):
+                if n.getMeshData():
+                    fileName = n.getName()
+                    if fileName:
+                        break
 
         if not fileName:
             Logger.log("e", "fileName: {0}".format(fileName))

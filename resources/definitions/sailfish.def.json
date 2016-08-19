@@ -14,52 +14,6 @@
         "preferred_quality": "*normal*"
     },
 
-    "machine_settings":
-    {
-        "children":
-        {
-            "machine_wait_pos_x":
-            {
-                "label": "Wait X Position",
-                "description": "The X coordinate of the position where the machine waits for temperature at the start of printing.",
-                "type": "float",
-                "unit": "mm",
-                "default_value": "machine_width / 2",
-                "minimum_value_warning": "-machine_width",
-                "maximum_value_warning": "machine_width",
-                "settable_per_mesh": false,
-                "settable_per_extruder": false,
-                "enabled": false
-            },
-            "machine_wait_pos_y":
-            {
-                "label": "Wait Y Position",
-                "description": "The Y coordinate of the position where the machine waits for temperature at the start of printing.",
-                "type": "float",
-                "unit": "mm",
-                "default_value": "-machine_depth / 2",
-                "minimum_value_warning": "-machine_depth",
-                "maximum_value_warning": "machine_depth",
-                "settable_per_mesh": false,
-                "settable_per_extruder": false,
-                "enabled": false
-            },
-            "machine_wait_pos_z":
-            {
-                "label": "Wait Z Position",
-                "description": "The Z coordinate of the position where the machine waits for temperature at the start of printing.",
-                "type": "float",
-                "unit": "mm",
-                "default_value": 30,
-                "minimum_value_warning": "0",
-                "maximum_value_warning": "machine_height",
-                "settable_per_mesh": false,
-                "settable_per_extruder": false,
-                "enabled": false
-            }
-        }
-    },
-
     "overrides": {
         "machine_width": { "default_value": 227 },
         "machine_height": { "default_value": 150 },
@@ -69,7 +23,7 @@
         "machine_gcode_flavor": { "default_value": "RepRap" },
 
         "machine_start_gcode": {
-            "default_value": "(@start_gcode_begin)\nM73 P0 ; tell the firmware we're starting a build\nG130 X118 Y118 A118 B118 ; set vref's to default_value\n;\n; home and set coordinates\n\nT0 ; home on the right extruder\nG90 ;  set positioning to absolute\nG28 X Y Z ; home XYZ at default_value home feedrates\nG92 X0 Y0 Z0 A0 B0 ; define this as Z=0, the other coords are technically unnecessary but x3g requires them so gpx will make some up\n; home Z again slowly to give more consistent first layer height\nG1 Z5 ; move the platform 5mm down\nG28 Z F500 ; so we can home z again slowly\nM132 X Y Z  ; Recall stored home offsets\n;\n; wait for heat up\nG1 X112 Y-72 Z30 F3300 ; move to waiting position (front right corner of print bed)\nM116 ; wait for target temperatures to be reached. GPX only, RepG doesn't understand\nT{adhesion_extruder_nr} ; switch to adhesion extruder\n; purge and wipe\nG92 E0 ; set current extruder position as 0 so that E15 below makes sense\nG1 X110 Y-70 Z0.2 F2400.0 ; move to just on the bed\nG1 X110 Y70 E15 F1200.000 ; extrude a line of filament along the right edge of the bed\nG92 E0 ; set E to 0 again because the slicer's next extrusion is relative to this 0\n(@start_gcode_end)"
+            "default_value": "(@start_gcode_begin)\nM73 P0 ; tell the firmware we're starting a build\nG130 X118 Y118 A118 B118 ; set vref's to default_value\n;\n; home and set coordinates\nT0 ; home on the right extruder\nG90 ;  set positioning to absolute\nG28 X Y Z ; home XYZ at default_value home feedrates\nG92 X0 Y0 Z0 A0 B0 ; define this as Z=0, the other coords are technically unnecessary but x3g requires them so gpx will make some up\n; home Z again slowly to give more consistent first layer height\nG1 Z5 ; move the platform 5mm down\nG28 Z F500 ; so we can home z again slowly\nM132 X Y Z  ; Recall stored home offsets\n;\n; wait for heat up\nG1 X112 Y-72 Z30 F3300 ; move to waiting position (front right corner of print bed)\nM116 ; wait for target temperatures to be reached. GPX only, RepG doesn't understand\n(@start_gcode_end)\n"
         },
         "machine_end_gcode": {
             "default_value": "(@end_gcode_begin)\nM73 P100 ; end build progress\nM140 S0 ; set bed temperature to 0\nM104 S0 T0 ; set extruder temperature to 0\nM104 S0 T1 ; set other extruder temperature to 0\nT0 ; Next job may assume T0 is the current tool\nG1 Z150 ; platform to the bottom\nG162 X Y F2500 ; home X and Y axes\nM18 ; disable all stepper motors\nM70 P5 (We <3 Making Things!)\nM72 P1 ; Play Ta-Da song\n(@end_gcode_end)"
@@ -82,6 +36,7 @@
         "retraction_amount": { "default_value": 1.3 },
         "retraction_retract_speed": { "default_value": 30 },
         "retraction_prime_speed": { "default_value": 10 },
+        "switch_extruder_retraction_amount": { "default_value": 2 },
 
         "material_print_temperature": { "default_value": 210.0 },
         "material_bed_temperature":   { "default_value": 60.0 },
